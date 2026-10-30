@@ -44,10 +44,7 @@
     let html = await response.text();
     html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${siteBase}/">`);
     if (siteBase) {
-      html = html.replace(
-        /(["'(=])\/(assets|images|about|articles|case-studies|contact-us|review|service-details|services)(?=[/?#"' )])/g,
-        `$1${siteBase}/$2`,
-      );
+      html = html.replace(/(["'(=])\/(?!\/)/g, `$1${siteBase}/`);
     }
 
     const scrollScript = `<script>
