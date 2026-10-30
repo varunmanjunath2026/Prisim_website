@@ -1,0 +1,8 @@
+/*
+ * CaretRight (phosphor-icons/CaretRight@0.0.53)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/VhPOCX2CdkL3402L9YQS/CaretRight.js"
+export { default } from "https://framerusercontent.com/modules/4DdaUvaccgEgxMd5tHRL/VhPOCX2CdkL3402L9YQS/CaretRight.js"

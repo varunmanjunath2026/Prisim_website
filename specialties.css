@@ -1,0 +1,284 @@
+#prisim-specialties-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+#prisim-specialties-grid .prisim-specialty-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 390px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #171717, #0d0d0d);
+  color: #fff8ed;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  animation: prisim-specialty-appear 520ms both;
+}
+
+#prisim-specialties-grid .prisim-specialty-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 124, 29, 0.58);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+#prisim-specialties-grid .prisim-specialty-card:nth-child(1),
+#prisim-specialties-grid .prisim-specialty-card:nth-child(4) {
+  grid-column: span 7;
+}
+
+#prisim-specialties-grid .prisim-specialty-card:nth-child(2),
+#prisim-specialties-grid .prisim-specialty-card:nth-child(3) {
+  grid-column: span 5;
+}
+
+#prisim-specialties-grid .prisim-specialty-card:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+#prisim-specialties-grid .prisim-specialty-card:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+#prisim-specialties-grid .prisim-specialty-card:nth-child(4) {
+  animation-delay: 210ms;
+}
+
+#prisim-specialties-grid .prisim-specialty-label {
+  margin: 0 0 8px;
+  color: #e08b36;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+#prisim-specialties-grid .prisim-specialty-art {
+  position: relative;
+  display: flex;
+  min-height: 146px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+}
+
+#prisim-specialties-grid .prisim-specialty-art--photo img {
+  display: block;
+  width: 100%;
+  height: 146px;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+#prisim-specialties-grid .prisim-specialty-heading {
+  max-width: 25ch;
+  margin: 0 0 10px;
+  color: inherit;
+  font-size: clamp(22px, 2.2vw, 29px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+#prisim-specialties-grid .prisim-specialty-description {
+  max-width: 64ch;
+  margin: 0;
+  color: rgba(255, 248, 237, 0.76);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+#prisim-specialties-grid .prisim-specialty-card--orange {
+  border-color: rgba(255, 180, 95, 0.52);
+  background:
+    linear-gradient(135deg, rgba(217, 124, 29, 0.9), rgba(230, 143, 49, 0.96)),
+    url("/assets/framerusercontent.com/images/QHwiFG8CdFS1wdIHWtWHvAuzLAM.05jzcui.jpg") center 48% / cover;
+  color: #111;
+}
+
+#prisim-specialties-grid .prisim-specialty-card--orange:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+#prisim-specialties-grid .prisim-specialty-card--orange .prisim-specialty-label,
+#prisim-specialties-grid .prisim-specialty-card--orange .prisim-specialty-description {
+  color: rgba(17, 17, 17, 0.82);
+}
+
+#prisim-specialties-grid .prisim-specialty-card--orange .prisim-specialty-art {
+  border-color: rgba(0, 0, 0, 0.14);
+  background: rgba(10, 10, 10, 0.09);
+}
+
+#prisim-specialties-grid .prisim-marketing-visual {
+  width: min(82%, 350px);
+  height: 96px;
+}
+
+#prisim-specialties-grid .prisim-marketing-visual path {
+  fill: none;
+  stroke: #e08b36;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+#prisim-specialties-grid .prisim-marketing-bars {
+  position: absolute;
+  right: 12%;
+  bottom: 17px;
+  left: 12%;
+  display: flex;
+  height: 40px;
+  align-items: flex-end;
+  gap: 8px;
+  opacity: 0.72;
+}
+
+#prisim-specialties-grid .prisim-marketing-bars span {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #e08b36, rgba(217, 124, 29, 0.12));
+}
+
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(1) { height: 38%; }
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(2) { height: 60%; }
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(3) { height: 48%; }
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(4) { height: 78%; }
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(5) { height: 66%; }
+#prisim-specialties-grid .prisim-marketing-bars span:nth-child(6) { height: 100%; }
+
+#prisim-specialties-grid .prisim-journey {
+  display: grid;
+  width: 90%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px;
+}
+
+#prisim-specialties-grid .prisim-journey-step {
+  position: relative;
+  display: grid;
+  min-height: 68px;
+  place-items: center;
+  padding: 8px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 248, 237, 0.83);
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+#prisim-specialties-grid .prisim-journey-step:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  width: 8px;
+  height: 1px;
+  background: #e08b36;
+  content: "";
+}
+
+#prisim-specialties-grid .prisim-product-visual {
+  display: grid;
+  width: min(82%, 340px);
+  min-height: 100px;
+  grid-template-columns: 1fr 0.64fr;
+  gap: 9px;
+  transform: rotate(-2deg);
+}
+
+#prisim-specialties-grid .prisim-product-window,
+#prisim-specialties-grid .prisim-product-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(12, 12, 12, 0.88);
+}
+
+#prisim-specialties-grid .prisim-product-window span,
+#prisim-specialties-grid .prisim-product-panel span {
+  display: block;
+  height: 7px;
+  border-radius: 8px;
+  background: rgba(255, 248, 237, 0.22);
+}
+
+#prisim-specialties-grid .prisim-product-window span:first-child {
+  width: 42%;
+  background: #e08b36;
+}
+
+#prisim-specialties-grid .prisim-product-window span:nth-child(2) { width: 88%; }
+#prisim-specialties-grid .prisim-product-window span:nth-child(3) { width: 70%; }
+#prisim-specialties-grid .prisim-product-panel span:nth-child(2) { width: 75%; }
+
+@keyframes prisim-specialty-appear {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  #prisim-specialties-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  #prisim-specialties-grid .prisim-specialty-card:nth-child(n) {
+    grid-column: 1;
+    min-height: 0;
+    padding: 18px;
+  }
+
+  #prisim-specialties-grid .prisim-specialty-art {
+    min-height: 124px;
+    margin-bottom: 17px;
+  }
+
+  #prisim-specialties-grid .prisim-specialty-art--photo img {
+    height: 124px;
+  }
+
+  #prisim-specialties-grid .prisim-specialty-heading {
+    font-size: clamp(22px, 7vw, 27px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #prisim-specialties-grid .prisim-specialty-card {
+    animation: none;
+    transition: none;
+  }
+}

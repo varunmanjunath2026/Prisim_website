@@ -1,0 +1,181 @@
+.prisim-tilted-services {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 42vw, 600px);
+  min-height: clamp(460px, 42vw, 600px);
+  flex: 0 0 auto;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff8ed;
+}
+
+.prisim-tilted-service-band,
+.prisim-tilted-service-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.prisim-tilted-service-band {
+  overflow: hidden;
+  perspective: 1000px;
+  perspective-origin: 50% 56%;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.prisim-tilted-service-tile {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.prisim-tilted-service-slice {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  background: #171411;
+}
+
+.prisim-tilted-service-slice img {
+  position: absolute;
+  top: 0;
+  max-width: none;
+  object-fit: cover;
+  user-select: none;
+}
+
+.prisim-tilted-service-shade {
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 70%),
+    linear-gradient(0deg, #090909 0%, rgba(9, 9, 9, 0.8) 22%, rgba(9, 9, 9, 0.06) 80%);
+}
+
+.prisim-tilted-service-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 24px;
+  padding: clamp(20px, 4vw, 48px);
+}
+
+.prisim-tilted-service-detail {
+  max-width: 720px;
+}
+
+.prisim-tilted-service-eyebrow {
+  color: #ffad45;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.prisim-tilted-service-detail h2 {
+  margin: 10px 0;
+  color: #fff8ed;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.prisim-tilted-service-detail p {
+  max-width: 60ch;
+  color: rgba(255, 248, 237, 0.82);
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.6;
+}
+
+.prisim-tilted-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  color: #ffad45;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.prisim-tilted-service-link span {
+  font-size: 18px;
+  transition: transform 200ms ease;
+}
+
+.prisim-tilted-service-link:hover span {
+  transform: translate(3px, -3px);
+}
+
+.prisim-tilted-service-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+}
+
+.prisim-tilted-service-tab {
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: rgba(255, 248, 237, 0.66);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.prisim-tilted-service-tab[aria-selected="true"],
+.prisim-tilted-service-tab:hover {
+  border-color: #ff991c;
+  color: #ffad45;
+}
+
+.prisim-tilted-service-tab:focus-visible,
+.prisim-tilted-service-link:focus-visible {
+  outline: 2px solid #ff991c;
+  outline-offset: 4px;
+}
+
+@media (max-width: 809.98px) {
+  .prisim-tilted-services {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .prisim-tilted-service-content {
+    gap: 18px;
+  }
+
+  .prisim-tilted-service-tabs {
+    gap: 6px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prisim-tilted-services {
+    height: 590px;
+    min-height: 590px;
+  }
+
+  .prisim-tilted-service-detail h2 {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prisim-tilted-service-tile {
+    animation-play-state: paused !important;
+  }
+
+  .prisim-tilted-service-link span,
+  .prisim-tilted-service-tab {
+    transition: none;
+  }
+}

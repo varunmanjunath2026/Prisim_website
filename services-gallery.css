@@ -1,0 +1,254 @@
+.prisim-services-gallery {
+  display: flex !important;
+  width: 100%;
+  height: clamp(420px, 42vw, 540px);
+  min-height: 420px;
+  gap: 12px;
+  margin: 28px 0 0;
+  overflow: hidden;
+}
+
+.prisim-service-panel {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  background-color: #171411;
+  background-image: var(--service-image);
+  background-position: var(--service-image-position, center);
+  background-size: cover;
+  color: #fff8ed;
+  cursor: pointer;
+  outline: none;
+  transition:
+    flex-grow 700ms cubic-bezier(0.25, 1, 0.5, 1),
+    filter 500ms ease,
+    border-color 500ms ease;
+  filter: brightness(0.58);
+}
+
+.prisim-service-panel.is-active {
+  flex-grow: 4;
+  border-color: rgba(255, 153, 28, 0.72);
+  filter: brightness(1);
+}
+
+.prisim-service-panel:hover:not(.is-active) {
+  filter: brightness(0.78);
+}
+
+.prisim-service-panel:focus-visible {
+  outline: 2px solid #ff991c;
+  outline-offset: -4px;
+}
+
+.prisim-service-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.08) 8%,
+    rgba(10, 10, 10, 0.24) 42%,
+    rgba(10, 10, 10, 0.9) 100%
+  );
+  opacity: 0.35;
+  transition: opacity 500ms ease;
+}
+
+.prisim-service-panel.is-active .prisim-service-overlay {
+  opacity: 1;
+}
+
+.prisim-service-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(16px, 2.4vw, 30px);
+}
+
+.prisim-service-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 350ms ease,
+    transform 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  transition-delay: 0ms;
+  pointer-events: none;
+}
+
+.prisim-service-panel.is-active .prisim-service-details {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 150ms;
+  pointer-events: auto;
+}
+
+.prisim-service-category {
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 153, 28, 0.7);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.5);
+  color: #ffb04d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.prisim-service-details h3 {
+  max-width: 14ch;
+  color: #fff8ed;
+  font-size: clamp(24px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.prisim-service-details p {
+  max-width: 56ch;
+  color: rgba(255, 248, 237, 0.82);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.prisim-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 4px;
+  color: #ffad45;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.prisim-service-link span {
+  font-size: 17px;
+  transition: transform 200ms ease;
+}
+
+.prisim-service-link:hover span {
+  transform: translate(3px, -3px);
+}
+
+.prisim-service-inactive-label {
+  position: absolute;
+  right: 0;
+  bottom: 28px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  color: #fff8ed;
+  opacity: 1;
+  transition:
+    opacity 250ms ease,
+    transform 350ms ease;
+}
+
+.prisim-service-panel.is-active .prisim-service-inactive-label {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+.prisim-service-title-desktop {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+
+.prisim-service-title-mobile {
+  display: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 809.98px) {
+  .prisim-services-gallery {
+    height: 560px;
+    min-height: 560px;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .prisim-service-panel {
+    flex-basis: 0;
+    border-radius: 15px;
+  }
+
+  .prisim-service-panel.is-active {
+    flex-grow: 4;
+  }
+
+  .prisim-service-content {
+    padding: 16px 18px;
+  }
+
+  .prisim-service-details {
+    gap: 9px;
+  }
+
+  .prisim-service-details h3 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+
+  .prisim-service-details p {
+    font-size: 12px;
+  }
+
+  .prisim-service-inactive-label {
+    bottom: 50%;
+    left: auto;
+    width: 36px;
+    transform: translateY(50%);
+  }
+
+  .prisim-service-panel.is-active .prisim-service-inactive-label {
+    transform: translateY(50%) scale(0.85);
+  }
+
+  .prisim-service-title-desktop {
+    display: none;
+  }
+
+  .prisim-service-title-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .prisim-services-gallery {
+    height: 590px;
+    min-height: 590px;
+  }
+
+  .prisim-service-content {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prisim-service-panel,
+  .prisim-service-overlay,
+  .prisim-service-details,
+  .prisim-service-inactive-label,
+  .prisim-service-link span {
+    transition: none;
+  }
+}
