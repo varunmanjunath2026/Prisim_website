@@ -1,6 +1,5 @@
 (async function () {
-  const route = window.location.pathname.replace(/\/+$/, "");
-  const page = {
+  const routes = {
     "/about": {
       title: "About",
       navLabel: "About",
@@ -26,19 +25,30 @@
       navLabel: "Contact",
       find: () => document.querySelector('input[placeholder="Your name"]'),
     },
-  }[route];
+  };
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+  const route = Object.keys(routes).find((path) => pathname.endsWith(path));
+  const page = route ? routes[route] : null;
 
   if (!page) {
     document.body.textContent = "This page is not available.";
     return;
   }
 
+  const siteBase = pathname.slice(0, -route.length);
+
   try {
-    const response = await fetch("/index.html", { cache: "no-store" });
+    const response = await fetch(`${siteBase}/index.html`, { cache: "no-store" });
     if (!response.ok) throw new Error(`Homepage request failed (${response.status})`);
 
     let html = await response.text();
-    html = html.replace(/<head([^>]*)>/i, "<head$1><base href=\"/\">");
+    html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${siteBase}/">`);
+    if (siteBase) {
+      html = html.replace(
+        /(["'(=])\/(assets|images|about|articles|case-studies|contact-us|review|service-details|services)(?=[/?#"' )])/g,
+        `$1${siteBase}/$2`,
+      );
+    }
 
     const scrollScript = `<script>
       (() => {
