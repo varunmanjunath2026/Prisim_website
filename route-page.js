@@ -79,7 +79,7 @@
             subtree: true,
           });
         })();
-      <\\/script>`
+      <\/script>`
       : "";
     html = html.replace(
       /<head([^>]*)>/i,
