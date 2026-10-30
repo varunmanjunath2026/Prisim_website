@@ -42,10 +42,49 @@
     if (!response.ok) throw new Error(`Homepage request failed (${response.status})`);
 
     let html = await response.text();
-    html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${siteBase}/">`);
     if (siteBase) {
       html = html.replace(/(["'(=])\/(?!\/)/g, `$1${siteBase}/`);
     }
+    const normalizePaths = siteBase
+      ? `<script>
+        (() => {
+          const prefix = ${JSON.stringify(siteBase)};
+          const attributes = ["src", "href", "poster", "srcset"];
+          const fix = (root) => {
+            if (root.nodeType !== Node.ELEMENT_NODE) return;
+            const elements = [root, ...root.querySelectorAll("[src], [href], [poster], [srcset]")];
+            for (const element of elements) {
+              for (const attribute of attributes) {
+                const value = element.getAttribute(attribute);
+                if (!value) continue;
+                const updated = attribute === "srcset"
+                  ? value.replace(/(^|,\\s*)\\/(?!\\/)/g, "$1" + prefix + "/")
+                  : value.startsWith("/") && !value.startsWith("//")
+                    ? prefix + value
+                    : value;
+                if (updated !== value) element.setAttribute(attribute, updated);
+              }
+            }
+          };
+          fix(document.documentElement);
+          new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+              if (mutation.type === "attributes") fix(mutation.target);
+              else for (const node of mutation.addedNodes) fix(node);
+            }
+          }).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: attributes,
+            childList: true,
+            subtree: true,
+          });
+        })();
+      <\\/script>`
+      : "";
+    html = html.replace(
+      /<head([^>]*)>/i,
+      `<head$1><base href="${siteBase}/">${normalizePaths}`,
+    );
 
     const scrollScript = `<script>
       (() => {
