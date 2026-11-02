@@ -33,3 +33,12 @@
 
 /* Hero: hide the row of reviewer photos next to "15+ Five-Star Reviews". */
 [data-framer-name="Images Wrapper"].framer-15qtrbq { display: none !important; }
+
+/* Hero: hide the star rating and "15+ Five-Star Reviews" under the Get Started button. */
+[data-framer-name="Stat"].framer-1hu4leh { display: none !important; }
+
+/* With a mouse, the "Play video" badge follows the cursor over the hero photo, so hide the
+   separate phone/tablet play button to avoid showing two buttons. Touch devices keep it. */
+@media (hover: hover) and (pointer: fine) {
+  .framer-13d90j0 { display: none !important; }
+}
