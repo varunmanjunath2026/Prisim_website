@@ -4,7 +4,24 @@
   "headers": [
     {
       "source": "/f2c-sw.js",
-      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/digital-marketing-agency-mathikere",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-marketing-agency-mathikere/",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
