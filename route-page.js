@@ -39,7 +39,7 @@
   const siteBase = pathname.slice(0, -route.length);
 
   try {
-    const response = await fetch(`${siteBase}/index.html`, { cache: "no-store" });
+    const response = await fetch(`${siteBase}/index.html`);
     if (!response.ok) throw new Error(`Homepage request failed (${response.status})`);
 
     let html = await response.text();
@@ -152,14 +152,32 @@
             }
           }
         };
+        // Bring the section into view while the page is still building, but stop as soon as
+        // the visitor scrolls/taps/types or the section has settled, so the page never feels stuck.
+        let stopped = false, running = false, settled = 0;
+        const stop = () => { stopped = true; };
+        ["wheel", "touchstart", "keydown", "pointerdown"].forEach((type) =>
+          window.addEventListener(type, stop, { passive: true, once: true }));
         const scrollToSection = () => {
           document.title = ${JSON.stringify(pageTitle)};
           updateNavigation();
-          const target = (${page.find.toString()})();
-          if (target) {
-            target.scrollIntoView({ block: "start" });
-          }
-          if (Date.now() < deadline) setTimeout(scrollToSection, 200);
+          if (stopped || running) return;
+          running = true;
+          const step = () => {
+            if (stopped || Date.now() > deadline) { running = false; return; }
+            const target = (${page.find.toString()})();
+            if (target) {
+              const top = target.getBoundingClientRect().top;
+              if (Math.abs(top) <= 2) {
+                if (++settled >= 3) { stopped = true; running = false; return; }
+              } else {
+                settled = 0;
+                target.scrollIntoView({ block: "start" });
+              }
+            }
+            setTimeout(step, 150);
+          };
+          step();
         };
         const isNavigationNode = (node) => {
           if (node.nodeType !== Node.ELEMENT_NODE) return false;
