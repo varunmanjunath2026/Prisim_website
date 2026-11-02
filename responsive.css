@@ -21,3 +21,12 @@
 @media (min-width: 2700px) { html { zoom: 1.4; } }
 @media (min-width: 3200px) { html { zoom: 1.65; } }
 @media (min-width: 3700px) { html { zoom: 1.9; } }
+
+/* Phones and tablets: centre the round "Play video" button on the bottom edge of the
+   hero photo (half on the photo, half below) so it never covers anyone's face. */
+@media (max-width: 1199.98px) {
+  .framer-13d90j0 {
+    top: auto !important;
+    bottom: -34px !important;
+  }
+}
