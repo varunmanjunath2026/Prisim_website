@@ -1,0 +1,23 @@
+/* Extra responsive rules on top of the Framer layout. */
+
+/* Phones: the "Since 2025 · Best digital marketing agency in Bangalore" label
+   is one unbreakable line; shrink it to fit and let it wrap if it still can't. */
+@media (max-width: 809.98px) {
+  .framer-buonr5 {
+    max-width: 100% !important;
+  }
+  .framer-buonr5,
+  .framer-buonr5 * {
+    font-size: min(12px, calc((100vw - 44px) / 32)) !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+}
+
+/* Large monitors and TVs: the layout is designed up to ~1920px wide.
+   Above that, scale the whole page up so it fills the screen instead of
+   sitting in a small column in the middle. */
+@media (min-width: 2300px) { html { zoom: 1.2; } }
+@media (min-width: 2700px) { html { zoom: 1.4; } }
+@media (min-width: 3200px) { html { zoom: 1.65; } }
+@media (min-width: 3700px) { html { zoom: 1.9; } }
