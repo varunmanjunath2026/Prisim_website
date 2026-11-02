@@ -30,3 +30,6 @@
     bottom: -34px !important;
   }
 }
+
+/* Hero: hide the row of reviewer photos next to "15+ Five-Star Reviews". */
+[data-framer-name="Images Wrapper"].framer-15qtrbq { display: none !important; }
