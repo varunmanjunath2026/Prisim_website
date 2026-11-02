@@ -4,25 +4,25 @@
       title: "SEO",
       description:
         "We optimize your site's structure, content, and keywords to rank higher on search engine results pages, increasing your chances of being discovered by potential customers.",
-      image: "/assets/framerusercontent.com/images/2Y3YDjnHm71tOfbO1d2eWDckzI.0ntg901.jpg",
+      image: (window.__PB || "") + "/assets/framerusercontent.com/images/2Y3YDjnHm71tOfbO1d2eWDckzI.0ntg901.jpg",
     },
     {
       title: "Content Marketing",
       description:
         "Our content marketing services include creating informative blog posts, engaging videos, and shareable infographics to captivate your audience and drive traffic to your website.",
-      image: "/assets/framerusercontent.com/images/3AL5wf1zCoZoGp1aSyLXxgEUE.0h36l01.jpg",
+      image: (window.__PB || "") + "/assets/framerusercontent.com/images/3AL5wf1zCoZoGp1aSyLXxgEUE.0h36l01.jpg",
     },
     {
       title: "Website Design",
       description:
         "Our design experts craft visually stunning and user-friendly websites optimized for performance and conversion, ensuring a seamless online experience for your visitors.",
-      image: "/assets/framerusercontent.com/images/bSyfY8yZnWIysRpCPEUdiMrzb2o.1909qho.jpg",
+      image: (window.__PB || "") + "/assets/framerusercontent.com/images/bSyfY8yZnWIysRpCPEUdiMrzb2o.1909qho.jpg",
     },
     {
       title: "Social Media Marketing",
       description:
         "Engage and expand your audience across social media platforms with our tailored marketing strategies. From content creation to ad campaigns, we help you connect with your target demographic, foster brand loyalty.",
-      image: "/assets/framerusercontent.com/images/QHwiFG8CdFS1wdIHWtWHvAuzLAM.05jzcui.jpg",
+      image: (window.__PB || "") + "/assets/framerusercontent.com/images/QHwiFG8CdFS1wdIHWtWHvAuzLAM.05jzcui.jpg",
     },
   ];
 

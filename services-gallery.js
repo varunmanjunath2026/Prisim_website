@@ -33,15 +33,15 @@
       category: "Social growth",
       description:
         "Engage and expand your audience across social media platforms with tailored strategies, content creation, and ad campaigns that connect with your target audience.",
-      image: "/assets/framerusercontent.com/images/QHwiFG8CdFS1wdIHWtWHvAuzLAM.05jzcui.jpg",
-      position: "center 50%",
+      image: "/assets/services/social-media-marketing.jpg",
+      position: "78% 50%",
     },
   ];
 
   const renderService = ({ id, title, category, description, image, position }, index) => `
     <article
       class="prisim-service-panel${index === 0 ? " is-active" : ""}"
-      style="--service-image: url('${image}'); --service-image-position: ${position}"
+      style="--service-image: url('${(window.__PB || "") + image}'); --service-image-position: ${position}"
       data-service-index="${index}"
       role="group"
       aria-label="${title} service"
@@ -54,7 +54,7 @@
           <span class="prisim-service-category">${category}</span>
           <h3>${title}</h3>
           <p>${description}</p>
-          <a href="/service-details/" class="prisim-service-link">
+          <a href="${window.__PB || ""}/service-details/" class="prisim-service-link">
             Learn More <span aria-hidden="true">↗</span>
           </a>
         </div>

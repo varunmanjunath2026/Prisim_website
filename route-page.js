@@ -1,4 +1,5 @@
 (async function () {
+  const pageTitle = document.title;
   const routes = {
     "/about": {
       title: "About",
@@ -53,13 +54,16 @@
           const fix = (root) => {
             if (root.nodeType !== Node.ELEMENT_NODE) return;
             const elements = [root, ...root.querySelectorAll("[src], [href], [poster], [srcset]")];
+            // Only prefix root paths that don't already include the site folder.
+            const needsPrefix = (path) => path.startsWith("/") && !path.startsWith("//") && path !== prefix && !path.startsWith(prefix + "/");
             for (const element of elements) {
+              if (element.tagName === "BASE") continue;
               for (const attribute of attributes) {
                 const value = element.getAttribute(attribute);
                 if (!value) continue;
                 const updated = attribute === "srcset"
-                  ? value.replace(/(^|,\\s*)\\/(?!\\/)/g, "$1" + prefix + "/")
-                  : value.startsWith("/") && !value.startsWith("//")
+                  ? value.replace(/(^|,\\s*)(\\/[^\\s,]*)/g, (all, lead, path) => needsPrefix(path) ? lead + prefix + path : all)
+                  : needsPrefix(value)
                     ? prefix + value
                     : value;
                 if (updated !== value) element.setAttribute(attribute, updated);
@@ -81,6 +85,21 @@
         })();
       <\/script>`
       : "";
+    // Keep this page's own SEO tags (title, description, canonical, social, schema)
+    // instead of the home page's, so search engines index it as its own page.
+    const seoSelector = 'meta[name="description"], meta[name="robots"], meta[property^="og:"], meta[name^="twitter:"], link[rel="canonical"], script[type="application/ld+json"]';
+    const pageSeoTags = [...document.head.querySelectorAll(seoSelector)].map((el) => el.outerHTML).join("");
+    const headEnd = html.search(/<\/head>/i);
+    if (headEnd !== -1) {
+      const homeHead = html
+        .slice(0, headEnd)
+        .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, "")
+        .replace(/<meta[^>]+(?:name="description"|name="robots"|property="og:[^"]*"|name="twitter:[^"]*")[^>]*>/gi, "")
+        .replace(/<link[^>]+rel="canonical"[^>]*>/gi, "")
+        .replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${pageTitle.replace(/</g, "&lt;")}</title>`);
+      html = homeHead + pageSeoTags + html.slice(headEnd);
+    }
+
     html = html.replace(
       /<head([^>]*)>/i,
       `<head$1><base href="${siteBase}/">${normalizePaths}`,
@@ -134,7 +153,7 @@
           }
         };
         const scrollToSection = () => {
-          document.title = "${page.title} | Prisim";
+          document.title = ${JSON.stringify(pageTitle)};
           updateNavigation();
           const target = (${page.find.toString()})();
           if (target) {
@@ -175,7 +194,7 @@
     document.open();
     document.write(html);
     document.close();
-    document.title = `${page.title} | Prisim`;
+    document.title = pageTitle;
   } catch (error) {
     document.body.textContent = `Unable to load ${page.title}: ${error.message}`;
     console.error(error);

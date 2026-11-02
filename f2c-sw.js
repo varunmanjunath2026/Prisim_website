@@ -5,7 +5,7 @@ const H=["framerusercontent.com","app.framerstatic.com","ordinary-grapefruit-094
 const hit=h=>H.some(x=>x.startsWith(".")?(h===x.slice(1)||h.endsWith(x)):h===x);
 self.addEventListener("fetch",e=>{try{const u=new URL(e.request.url);
 if(!hit(u.hostname))return;
-const local=n=>new URL("/"+n,self.location.origin).href;
+const local=n=>new URL(n,self.registration.scope).href;
 const rm=/[?&]range=(\d+)-(\d+)/.exec(u.search);
 if(rm&&/\.framercms$/.test(u.pathname)){const w=M[u.pathname];
 if(w){e.respondWith(fetch(local(w)).then(r=>r.arrayBuffer()).then(b=>

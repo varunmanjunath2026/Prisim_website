@@ -18,7 +18,7 @@
       description:
         "Custom websites, SaaS platforms, CRM systems, business dashboards and workflow automation tailored to business requirements.",
       visual: `<div class="prisim-specialty-art prisim-specialty-art--photo" aria-hidden="true">
-        <img src="/assets/framerusercontent.com/images/bSyfY8yZnWIysRpCPEUdiMrzb2o.1909qho.jpg" alt="" loading="lazy">
+        <img src="${window.__PB || ""}/assets/framerusercontent.com/images/bSyfY8yZnWIysRpCPEUdiMrzb2o.1909qho.jpg" alt="" loading="lazy">
       </div>`,
     },
     {
