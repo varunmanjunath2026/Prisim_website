@@ -205,6 +205,12 @@
         window.addEventListener("load", scrollToSection, { once: true });
         document.addEventListener("DOMContentLoaded", scrollToSection, { once: true });
         setTimeout(scrollToSection, 500);
+
+        // The site's own code may set the home page title after loading; keep this page's title.
+        const pageTitleText = ${JSON.stringify(pageTitle)};
+        const keepTitle = () => { const want = window.__prisimTitle || pageTitleText; if (document.title !== want) document.title = want; };
+        new MutationObserver(keepTitle).observe(document.head, { childList: true, subtree: true, characterData: true });
+        keepTitle();
       })();
     <\/script>`;
 

@@ -60,7 +60,7 @@
         else target.scrollIntoView({ behavior: "smooth", block: route === "contact-us" ? "center" : "start" });
         const url = (window.__PB || "") + (route ? "/" + route + "/" : "/");
         if (location.pathname !== url) history.pushState({ prisimSection: route }, "", url);
-        if (TITLES[route]) document.title = TITLES[route];
+        if (TITLES[route]) { window.__prisimTitle = TITLES[route]; document.title = TITLES[route]; }
         return;
       }
     }
@@ -77,7 +77,7 @@
     const route = routeOf(location.pathname);
     if (route === null) return;
     const target = SECTIONS[route]();
-    if (TITLES[route]) document.title = TITLES[route];
+    if (TITLES[route]) { window.__prisimTitle = TITLES[route]; document.title = TITLES[route]; }
     if (route === "") window.scrollTo({ top: 0, behavior: "smooth" });
     else if (target) target.scrollIntoView({ behavior: "smooth", block: route === "contact-us" ? "center" : "start" });
   });
