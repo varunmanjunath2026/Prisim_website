@@ -1,4 +1,32 @@
+# Prisim (www.prisim.co.in)
+# Policy: we want to be found in search engines AND cited by AI assistants,
+# so search, AI-search and user-triggered AI fetchers are all allowed.
+# Review this list every few months - AI crawler names change often.
+
 User-agent: *
 Allow: /
+
+# AI search / answer engines (allowed so Prisim can be cited in AI answers)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+Allow: /
+
+# AI model training (allowed: we are happy for models to learn about Prisim)
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: CCBot
+Allow: /
+
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://www.prisim.co.in/sitemap.xml
