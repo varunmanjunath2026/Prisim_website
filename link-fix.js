@@ -49,7 +49,9 @@
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const a = event.target.closest && event.target.closest("a[href]");
     if (!a || (a.target && a.target !== "_self")) return;
-    const href = a.getAttribute("href");
+    // Hero "Get Started" button always goes to the contact form.
+    const isHeroCta = a.closest('[data-framer-name="Button and Review Numbers"]') && /get started/i.test(a.textContent);
+    const href = isHeroCta ? (window.__PB || "") + "/contact-us/" : a.getAttribute("href");
     const route = routeOf(href);
     if (route !== null && homeContentShown()) {
       const target = SECTIONS[route]();
