@@ -42,3 +42,6 @@
 @media (hover: hover) and (pointer: fine) {
   .framer-13d90j0 { display: none !important; }
 }
+
+/* Projects: all four projects are already shown, so "View All Projects" had nowhere to go. */
+.framer-1dmi1l2 > .framer-yi27rj-container { display: none !important; }

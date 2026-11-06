@@ -31,6 +31,46 @@
       "source": "/digital-marketing-agency-mathikere/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/case-studies/stellar-shots-videography",
+      "destination": "/case-studies/tyaara-weddings/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/stellar-shots-videography/",
+      "destination": "/case-studies/tyaara-weddings/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/razor-sharp-barbershop",
+      "destination": "/case-studies/relicomp-elevators/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/razor-sharp-barbershop/",
+      "destination": "/case-studies/relicomp-elevators/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/archivision-architects",
+      "destination": "/case-studies/manpho-media-corp/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/archivision-architects/",
+      "destination": "/case-studies/manpho-media-corp/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/fernhill-landscapes",
+      "destination": "/case-studies/chandana-car-care/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/fernhill-landscapes/",
+      "destination": "/case-studies/chandana-car-care/",
+      "permanent": true
     }
   ]
 }

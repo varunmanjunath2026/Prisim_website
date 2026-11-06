@@ -1,5 +1,5 @@
-// Hero "Play video · Know about us": open the Prisim Instagram video in a pop-up
-// player on the page instead of the template's stock video.
+// Hero "Play video · Know about us" and the client video reviews: play the Instagram
+// video in a pop-up player on the page.
 (() => {
   const POST = "https://www.instagram.com/p/DdRIlFwzMuw/";
   const TRIGGERS = [
@@ -38,7 +38,7 @@
     if (lastFocus) lastFocus.focus();
   };
 
-  const open = () => {
+  const open = (post = POST) => {
     if (modal) return;
     lastFocus = document.activeElement;
     modal = document.createElement("div");
@@ -48,10 +48,10 @@
     modal.setAttribute("aria-label", "Prisim video");
     modal.innerHTML = `
       <div class="prisim-video-box">
-        <iframe src="${POST}embed/" title="Prisim on Instagram" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="eager"></iframe>
+        <iframe src="${post}embed/" title="Prisim on Instagram" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="eager"></iframe>
       </div>
       <button type="button" class="prisim-video-close" aria-label="Close video">&times;</button>
-      <a class="prisim-video-open" href="${POST}" target="_blank" rel="noopener">Open on Instagram</a>`;
+      <a class="prisim-video-open" href="${post}" target="_blank" rel="noopener">Open on Instagram</a>`;
     modal.addEventListener("click", (e) => {
       if (e.target === modal || e.target.closest(".prisim-video-close")) close();
     });
@@ -72,6 +72,16 @@
     e.preventDefault();
     e.stopImmediatePropagation();
     open();
+  }, true);
+
+  // Client video review cards.
+  window.addEventListener("click", (e) => {
+    if (modal || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !(e.target instanceof Element)) return;
+    const card = e.target.closest('[data-framer-name="Video Container"] a[href*="instagram.com/p/"]');
+    if (!card) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    open(card.href.split("?")[0].replace(/\/?$/, "/"));
   }, true);
 
   window.addEventListener("keydown", (e) => {

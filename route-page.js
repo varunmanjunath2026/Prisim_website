@@ -9,12 +9,14 @@
     "/case-studies": {
       title: "Case Studies",
       navLabel: "Projects",
+      gap: 110, // this heading slides in, so aim at its resting place, below the menu bar
       find: () => [...document.querySelectorAll("h1, h2, h3")].find((item) => item.textContent.trim() === "Case Studies"),
     },
     "/review": {
       title: "Reviews",
       navLabel: "Reviews",
-      find: () => [...document.querySelectorAll("a")].find((item) => item.textContent.trim().toUpperCase() === "VIEW ALL REVIEWS"),
+      gap: 130, // the client video cards, which slide in like the Projects heading
+      find: () => document.querySelector('[data-framer-name="Video Container"] a'),
     },
     "/articles": {
       title: "Blog",
@@ -133,7 +135,7 @@
             .filter((item) => item.link);
 
           for (const item of navItems) {
-            const isActive = item.label.toLowerCase() === "${page.navLabel.toLowerCase()}";
+            const isActive = item.label.toLowerCase() === (window.__prisimNavLabel || "${page.navLabel.toLowerCase()}");
             const style = isActive ? navStyles.active : navStyles.inactive;
             const variant = [...item.link.classList].find((name) => name.startsWith("framer-v-"));
             if (variant && variant !== style.variant) item.link.classList.replace(variant, style.variant);
@@ -167,12 +169,18 @@
             if (stopped || Date.now() > deadline) { running = false; return; }
             const target = (${page.find.toString()})();
             if (target) {
-              const top = target.getBoundingClientRect().top;
-              if (Math.abs(top) <= 2) {
+              let want = null;
+              if (${page.gap || 0}) {
+                want = -${page.gap || 0};
+                for (let el = target; el; el = el.offsetParent) want += el.offsetTop;
+              }
+              const off = want === null ? target.getBoundingClientRect().top : window.scrollY - want;
+              if (Math.abs(off) <= 2) {
                 if (++settled >= 3) { stopped = true; running = false; return; }
               } else {
                 settled = 0;
-                target.scrollIntoView({ block: "start" });
+                if (want === null) target.scrollIntoView({ block: "start" });
+                else window.scrollTo(0, want);
               }
             }
             setTimeout(step, 150);
