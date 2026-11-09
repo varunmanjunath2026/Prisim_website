@@ -45,3 +45,21 @@
 
 /* Projects: all four projects are already shown, so "View All Projects" had nowhere to go. */
 .framer-1dmi1l2 > .framer-yi27rj-container { display: none !important; }
+
+/* Reviews: the two client videos are the whole section, so "View All Reviews" had nowhere to go. */
+.framer-ckuq6i > .framer-181ncho-container { display: none !important; }
+
+/* Client result cards state facts, not quotes, so hide the star rating and quote mark. */
+.framer-l4ir7 .framer-ybardr, .framer-l4ir7 .framer-6dagwd { display: none !important; }
+
+/* How Our Services Work: the client result cards are shorter than the template cards. */
+@media (min-width: 810px) {
+  .framer-1dopcsy .framer-zzxq1z { height: 300px !important; }
+  .framer-1dopcsy .framer-136se8, .framer-1dopcsy .framer-11dwxqx { height: auto !important; }
+}
+
+/* Hero photo: the image file holds the group at 74% so it fits one screen on laptops.
+   Below 1200px, scale it back up so the people stay large on tablets and phones. */
+@media (max-width: 1199.98px) {
+  img[alt^="Three colleagues discussing"] { transform: scale(1.351); transform-origin: bottom center; }
+}
