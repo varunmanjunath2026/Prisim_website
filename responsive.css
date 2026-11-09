@@ -63,3 +63,6 @@
 @media (max-width: 1199.98px) {
   img[alt^="Three colleagues discussing"] { transform: scale(1.351); transform-origin: bottom center; }
 }
+
+/* How Our Services Work: remove the two template projects that had no real page. */
+a[href*="daniel-reed-copywriter"], a[href*="furry-friends-grooming"] { display: none !important; }
