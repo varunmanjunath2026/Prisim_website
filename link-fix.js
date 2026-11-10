@@ -41,7 +41,7 @@
   const SECTIONS = {
     "": () => document.body,
     "about": () => document.querySelector('[data-framer-name="Section - About"]'),
-    "case-studies": () => [...document.querySelectorAll("h1, h2, h3")].find((e) => e.textContent.trim() === "Case Studies" && e.getClientRects().length),
+    "case-studies": () => [...document.querySelectorAll('[data-framer-name="Section - Case Studies"] h2')].find((e) => e.textContent.trim() === "Projects" && e.getClientRects().length),
     "review": () => [...document.querySelectorAll('[data-framer-name="Video Container"] a')].find((e) => e.getClientRects().length),
     "articles": () => [...document.querySelectorAll("h1, h2, h3")].find((e) => e.textContent.trim() === "Dive into our collection of engaging blog posts" && e.getClientRects().length),
     "contact-us": () => [...document.querySelectorAll('input[placeholder="Your name"]')].find((e) => e.getClientRects().length),

@@ -7,10 +7,10 @@
       find: () => document.querySelector('[data-framer-name="Section - About"]'),
     },
     "/case-studies": {
-      title: "Case Studies",
+      title: "Projects",
       navLabel: "Projects",
       gap: 110, // this heading slides in, so aim at its resting place, below the menu bar
-      find: () => [...document.querySelectorAll("h1, h2, h3")].find((item) => item.textContent.trim() === "Case Studies"),
+      find: () => [...document.querySelectorAll('[data-framer-name="Section - Case Studies"] h2')].find((item) => item.textContent.trim() === "Projects"),
     },
     "/review": {
       title: "Reviews",
