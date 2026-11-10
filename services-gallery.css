@@ -160,6 +160,7 @@
 .prisim-service-panel.is-active .prisim-service-inactive-label {
   opacity: 0;
   transform: scale(0.85);
+  pointer-events: none;
 }
 
 .prisim-service-title-desktop {
