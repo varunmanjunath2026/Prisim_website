@@ -38,7 +38,7 @@ h1{margin:0 0 18px;font:500 clamp(30px,3.6vw,46px)/1.15 Unbounded,sans-serif;let
 footer{max-width:1240px;margin:0 auto;padding:24px 40px 96px;border-top:1px solid #ffffff1a;color:#a8a8a8;font-size:15px}
 @media (max-width:900px){
  .bar{padding:16px 20px;flex-wrap:wrap}
- .bar nav{gap:14px 18px;flex-wrap:wrap;font-size:11px}
+ .bar nav{display:grid;grid-template-columns:repeat(4,max-content);gap:12px 18px;font-size:11px}
  main{padding:20px 20px 56px}
  .hero{grid-template-columns:1fr;gap:28px}
  .stats{margin-top:32px}
