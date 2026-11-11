@@ -38,15 +38,12 @@
 
   // About, Projects, Reviews, Blog and Contact are sections of the home page.
   // When the home content is already on screen, glide to the section instead of reloading.
+  // About, Projects, Reviews, Blog and Contact are their own pages now; only "Home"
+  // glides (back to the top) when the home page is already on screen.
   const SECTIONS = {
     "": () => document.body,
-    "about": () => document.querySelector('[data-framer-name="Section - About"]'),
-    "case-studies": () => [...document.querySelectorAll('[data-framer-name="Section - Case Studies"] h2')].find((e) => e.textContent.trim() === "Projects" && e.getClientRects().length),
-    "review": () => [...document.querySelectorAll('[data-framer-name="Video Container"] a')].find((e) => e.getClientRects().length),
-    "articles": () => [...document.querySelectorAll("h1, h2, h3")].find((e) => e.textContent.trim() === "Dive into our collection of engaging blog posts" && e.getClientRects().length),
-    "contact-us": () => [...document.querySelectorAll('input[placeholder="Your name"]')].find((e) => e.getClientRects().length),
   };
-  const TITLES = {"about": "About Prisim | Digital Marketing Agency in Bangalore", "case-studies": "Digital Marketing Case Studies | Prisim Bangalore", "review": "Client Reviews | Prisim Digital Marketing Agency", "articles": "SEO &amp; Digital Marketing Blog | Prisim", "contact-us": "Contact Prisim | Digital Marketing Agency Bangalore", "": "Prisim | Best Digital Marketing Agency in Bangalore"};
+  const TITLES = { "": "Prisim | Software & Digital Marketing Agency in Bangalore" };
   const routeOf = (href) => {
     if (!href) return null;
     const base = window.__PB || "";
@@ -123,6 +120,12 @@
     // Hero "Get Started" button always goes to the contact form.
     const isHeroCta = a.closest('[data-framer-name="Button and Review Numbers"]') && /get started/i.test(a.textContent);
     const href = isHeroCta ? (window.__PB || "") + "/contact-us/" : a.getAttribute("href");
+    if (isHeroCta) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.location.assign(href);
+      return;
+    }
     const project = projectLink(href);
     if (project) {
       event.preventDefault();

@@ -38,7 +38,7 @@
     },
   ];
 
-  const renderService = ({ id, title, category, description, image, position }, index) => `
+  const renderService = ({ id, title, category, description, image, position }, index, tag) => `
     <article
       class="prisim-service-panel${index === 0 ? " is-active" : ""}"
       style="--service-image: url('${(window.__PB || "") + image}'); --service-image-position: ${position}"
@@ -52,7 +52,7 @@
       <div class="prisim-service-content">
         <div class="prisim-service-details">
           <span class="prisim-service-category">${category}</span>
-          <h3>${title}</h3>
+          <${tag}>${title}</${tag}>
           <p>${description}</p>
           <a href="${window.__PB || ""}/service-details/" class="prisim-service-link">
             Learn More <span aria-hidden="true">↗</span>
@@ -80,7 +80,8 @@
       cards.className = "prisim-services-gallery";
       cards.removeAttribute("style");
       cards.setAttribute("role", "list");
-      cards.innerHTML = services.map(renderService).join("");
+      const tag = [...section.querySelectorAll("h2")].some((h) => !cards.contains(h)) ? "h3" : "h2";
+      cards.innerHTML = services.map((item, index) => renderService(item, index, tag)).join("");
       cards.dataset.prisimServicesGallery = "true";
 
       const panels = [...cards.querySelectorAll(".prisim-service-panel")];
