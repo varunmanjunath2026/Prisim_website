@@ -54,12 +54,12 @@
     },
     {
       "source": "/case-studies/archivision-architects",
-      "destination": "/case-studies/manpho-media-corp/",
+      "destination": "/case-studies/",
       "permanent": true
     },
     {
       "source": "/case-studies/archivision-architects/",
-      "destination": "/case-studies/manpho-media-corp/",
+      "destination": "/case-studies/",
       "permanent": true
     },
     {
@@ -70,6 +70,16 @@
     {
       "source": "/case-studies/fernhill-landscapes/",
       "destination": "/case-studies/chandana-car-care/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/manpho-media-corp",
+      "destination": "/case-studies/",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/manpho-media-corp/",
+      "destination": "/case-studies/",
       "permanent": true
     }
   ]

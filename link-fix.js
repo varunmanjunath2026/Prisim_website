@@ -15,7 +15,7 @@
   const PROJECTS = {
     "stellar-shots-videography": "tyaara-weddings",
     "razor-sharp-barbershop": "relicomp-elevators",
-    "archivision-architects": "manpho-media-corp",
+   
     "fernhill-landscapes": "chandana-car-care",
   };
   const projectLink = (href) => {

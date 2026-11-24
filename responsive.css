@@ -66,3 +66,8 @@
 
 /* How Our Services Work: remove the two template projects that had no real page. */
 a[href*="daniel-reed-copywriter"], a[href*="furry-friends-grooming"] { display: none !important; }
+
+/* Manpho Groups removed from the site: logo ticker, results cards, project cards. */
+li:has(img[src*="manpho-groups"]),
+section:has(> div a[href*="manpho-media-corp"]), section:has(> div a[href*="archivision-architects"]),
+a[href*="manpho-media-corp"], a[href*="archivision-architects"] { display: none !important; }
