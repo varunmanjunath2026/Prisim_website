@@ -5,3 +5,11 @@
   const src = document.currentScript && document.currentScript.src;
   window.__PB = src ? new URL(".", src).pathname.replace(/\/$/, "") : "";
 })();
+
+// Seasonal add-on (snowfall, lights, greeting). Remove this block to turn it off.
+(() => {
+  const s = document.createElement("script");
+  s.src = (window.__PB || "") + "/christmas.js";
+  s.defer = true;
+  document.head.appendChild(s);
+})();
